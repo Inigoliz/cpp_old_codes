@@ -1,0 +1,32 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+  const int ndim=3;
+  //int ndim=3; // can lead to problems: see below
+
+  double a[ndim] = {1.2,6.7,2.5}; // declaration of an array
+
+  //double a[ndim] = {1.2,6.7};
+  //double a[ndim] = {};
+  //double a[ndim]; // not initialised
+  //double a [] = {1.2,6.7,2.5}; // use with care
+
+  //a[0]=1.2; a[1]=6.7; a[2]=2.5;  // access element of array
+                                   // indices start at 0 up to (ndim-1)
+  
+  //a[3]=4.5; // produces error with "const int ndim=3"
+  //cout << a[3] << endl;
+
+  a[(1+1)]=2.2;
+
+  for(int i=0;i<ndim;i++) {
+
+    cout <<"i, a: " << i << " " << a[i] << endl;
+
+  }
+
+}

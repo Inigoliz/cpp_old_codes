@@ -1,0 +1,15 @@
+double maxvect(matrix<double> sumFil, int n){ // toma como argumentos la columna sumFil y la dimension (1xn)
+
+  int r;
+  r = sumFil(0,0); // coge el primer elemento
+
+  for(int i = 1; i<dim; i++){
+
+    if(a[i] < r){ // compara el primer elemento con el segundo
+      r = sumFil(i,0);
+    }
+  }
+
+  return r; 
+
+}

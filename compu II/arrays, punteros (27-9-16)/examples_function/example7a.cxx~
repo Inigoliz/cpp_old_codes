@@ -1,0 +1,22 @@
+/*
+  #include of separate function
+*/
+
+#include <iostream>
+
+using namespace std;
+
+#include "example7b.cxx"
+
+// es conveniente poner este include después de los includes standard de C++
+
+
+int main () {
+
+  int x=5, y=3, z;
+
+  z = subtraction(7,2); // call of function 
+
+  cout << "The result is  " << z << '\n';
+
+}

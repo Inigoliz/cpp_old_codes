@@ -1,0 +1,62 @@
+
+
+*******************************************************************************
+Thu Sep 22 17:25:52 2016
+
+
+FIT:    data read from 'derivada1.dat' u 1:2
+        format = x:z
+        x range restricted to [-10.0000 : 10.0000]
+        #datapoints = 401
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Thu Sep 22 17:26:06 2016
+
+
+FIT:    data read from 'derivada1.dat' u 1:2
+        format = x:z
+        x range restricted to [-10.0000 : 10.0000]
+        #datapoints = 401
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 184.09            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.707107
+
+initial set of free parameter values
+
+a               = 1
+b               = 1
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 1.58396e-09
+rel. change during last iteration : -7.62519e-10
+
+degrees of freedom    (FIT_NDF)                        : 399
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.99244e-06
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.96982e-12
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+a               = 1                +/- 1.405e-07    (1.405e-05%)
+b               = 4.63683e-07      +/- 1.409e-07    (30.38%)
+
+
+correlation matrix of the fit parameters:
+
+               a      b      
+a               1.000 
+b              -0.000  1.000 

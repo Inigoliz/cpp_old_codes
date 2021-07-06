@@ -1,0 +1,43 @@
+// DOBLECES PAPEL:
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+bool casoDePrueba(){
+
+  double grosor, altura;
+  cin>>grosor>>altura;
+
+  int pliegues = 1;
+
+  grosor = grosor*pow(10, -6);
+
+  if(!cin){
+    return false;
+  }
+  else{
+    while(grosor<altura){
+      grosor = grosor*pow(2,pliegues);
+      pliegues+=1;
+    }
+    
+    cout<<pliegues-1<<"\n";
+    
+  }
+  
+  return true;
+
+}
+
+
+int main(){
+  
+  while(casoDePrueba()){
+  }
+
+  
+  return 0;
+
+}

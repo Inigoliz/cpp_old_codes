@@ -1,0 +1,13 @@
+Para enviar los ficheros de la práctica los ¨empaquetaremos¨ todos en
+uno sólo con el comando linux tar de la manera siguiente:
+supongamos que nuestro directorio se llama practica5 y que estamos
+en dicho directorio, entonces:
+
+
+    cd ..
+    el comando anterior sube al directorio superior
+    tar -cf practica_5.tar practica5
+    el comando anterior nos creara el fichero llamado practica_5.tar
+    que contiene todo el directorio practica5.
+    Entonces, adjuntaremos en el mail el fichero llamado practica_5.tar
+

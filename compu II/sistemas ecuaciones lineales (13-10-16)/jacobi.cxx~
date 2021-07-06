@@ -1,0 +1,22 @@
+/* 25-10-16. COMPU 2:*/
+/*METODO DE JACOBI para resolucion de sistemas de ecuaciones*/
+
+#include <iostream>
+#include <cmath>
+
+using namespace std
+
+
+
+void jacobi(double *A, double *B, double *X, int n){ // A, B y X son punteros que dirigen a las posiciones en el programa principal donde se han  guardado los elementos del sistema a resolver
+
+
+
+
+}
+
+
+int main(){
+
+
+}

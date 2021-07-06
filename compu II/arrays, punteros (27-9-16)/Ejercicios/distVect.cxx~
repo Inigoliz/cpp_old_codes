@@ -1,0 +1,36 @@
+/* Funcion para calcular la distancia entre dos vectores:
+
+ diferencia coordenada a coordenada al cuadrado*/
+
+#include <iostream>
+
+using namespace std;
+
+
+double  distancia(double *a, double *b, int dim){ // a y b son los vectores de entrada; dim, su dimension
+
+  double r;
+
+  for(int i = 0; i < dim; i++){
+
+    r = r + (a[i]-b[i])*(a[i]-b[i]);
+
+  }
+
+  return r;
+
+}
+
+
+int main () {
+
+  const int dim=3;
+
+  double v1[n] = {1.1, 2.3, 4};
+  int v2[n] = {1.1, 2.3, 4};
+
+  double dist = distancia(v1, v2, dim);
+    
+  cout << 'distancia entre v1 y v2' << dist <<endl;
+
+}

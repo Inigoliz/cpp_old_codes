@@ -1,0 +1,29 @@
+/* TRATAMIENTO DE FICHEROS*/
+   /*PRUEBAS PRE-EXAEN*/
+
+
+#include <iostream>
+#include <cmath>
+#include <fstream> // para escribir o leer un archivo
+#include <iomanip>
+using namespace std;
+
+int main(){
+  ifstream elmio("misp.dat"); // abre archivo a lectura
+  ifstream eltuyo("tusp.dat");
+  ofstream resultados("resultados.dat"); // para escribir en archivo
+  double misnum,tusnum,sum; 
+  sum=0.0;
+
+  //  for(int i=0; i<3; i++){
+   while(!elmio.eof()){
+    cout<<elmio.eof()<<endl;
+    elmio>>misnum; eltuyo>>tusnum; // >> traslada 64 en cada traspaso de "elmio" a" misnum"
+    sum=misnum+tusnum;
+    resultados<<sum<<endl; // manda resultado de sum a "resultados"
+  }
+
+  elmio.close();
+  eltuyo.close(); 
+  resultados.close();
+}

@@ -1,0 +1,36 @@
+/* Metodo de biseccion para encontrar los ceros de una funcion*/
+
+double biseccion(double(*f)(double), double a, double b, double eps){
+
+  double signo = 0.0;
+  double x0;
+  double sol;
+  double bue; // valor analitico de la solucion
+
+
+  signo = f(a)*f(b);
+
+  if(signo > 0){ // para comprobar si entre los valores introducidos esta la solucion o no. Si no, se pide que se introduzcan unos nuevos.
+    cout<<"el intervalo indicado no es concluyente; acotar mas."<<endl;
+  }
+  else{
+
+    while(abs(bue-sol)) > eps){
+
+      x0 = (a+b)/2;
+      signo = f(a)*f(x0);
+
+      if(signo < 0){
+	b = x0;
+      }
+      else{
+	a = x0;
+      }
+
+    }
+  }
+
+
+
+
+}

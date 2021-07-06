@@ -1,0 +1,36 @@
+/* SISTEMAS DE ECUACIONES NO LINEALES-(26-10-16)*/
+
+// Estos codigos son para que funcione matrix.h
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+
+#include "matrix.h"
+using namespace math;
+
+
+matrix<double> f(matrix<double> v, int dim){
+  //x = a(0,0); y = a(1,0)
+  matrix<double> fv(dim,1); // columna que guardara (f1(v),f2(v))
+  fv(0,0) = pow(a(0,0),4)+pow(a(1,0),3)-pow(a(0,0),2)-4*pow(a(1,0),2)-6; // x4+y3-x2-4y2-6
+  fv(1,0) = 4*pow(a(0,0),2)-2*pow(a(1,0),2)+3*a(0,0)+1; // 4x2-2y2+3x+1
+  return fv;
+}
+
+
+
+
+
+int main(){
+  matrix<double> x(2,1);
+matrix<double> y(2,1);
+  x(0,0) = 0;
+  x(1,0) = 0;
+
+  y = f(x);
+  cout<<y<<endl;
+
+
+}

@@ -1,0 +1,34 @@
+/* Funcion que calcula el menor elemento de un Array*/
+
+int minArray(int *a, int dim){
+  int r;
+
+  int i = 1;
+
+  r = a[0]; // coge el primer elemento
+
+  if(i<dim){
+
+  if(r < a[i]){ // compara el primer elemento con el segundo
+    i = i+1;
+  }
+  else{
+    r = a[i];
+    i = i+1;
+  }
+
+  if(i>dim){
+    return r;
+  }
+  
+}
+}
+
+int main(){
+  const int n = 10;
+  int minimo;
+
+  int array[n] = {1,2,3,4,5,6,7,8,9,10};
+
+  minimo = minArray(a,n);
+}

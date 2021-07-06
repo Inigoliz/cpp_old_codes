@@ -1,0 +1,5 @@
+
+
+break; sale de un bucle o un condicional;
+
+a = 0; MEJOR a = 0.0;

@@ -1,0 +1,24 @@
+/* Programa para testear los metodos de busqueda de ceros de una funcion;
+   en func se declara la funcion, y las diferentes soluciones correponden a todos los metodos de solucion: biseccion, Newton y secante*/
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Se insertan las funciones
+
+#include "biseccion.cxx";
+
+
+//////////////////////////// Funcion para derivar///////////////////
+double func(double x){
+  return x*x-1-cos(acos(-1.0)*x);
+}
+///////////////////////////////////////////////////////////////////
+
+int main(){
+
+
+}

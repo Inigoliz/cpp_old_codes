@@ -1,0 +1,85 @@
+COMANDOS PROGRAMACION EN C++
+
+- Cabecera de programa (no incluir en funcion):
+	#include <iostream>: biblioteca de codigos
+	#include <cmath>: biblioteca funciones matemáticas
+	#include <fstream>: escribir o leer un archivo
+	#include <iomanip>: modificar precision
+	#include "(direccion)/(archivo)": biblioteca del archivo (funciones propias)
+		#include no acaba en ;
+
+
+- Declaracion de variables:
+	int: variable entera
+	double: variable decimal con doble precision --> se usara en todas las practicas
+		(certeza hasta la 17ª cifra)
+	const: variable constante
+	float: variable decimal con precision simple 
+		(certeza hasta la 7ª cifra decimal)
+	ifstream: variable de texto de entrada. Carga archivo de lectura. 
+		Poner nombre de variable, permite no repetir el nombre a lo largo del programa
+	ofstream: variable de texto de salida. Permite escribir archivo. 
+		Poner nombre de variable, permite no repetir el nombre a lo largo del programa
+	(type) *s: variable puntero (direccion de tamaño type)
+	char: variable de texto	
+	class (nombre): declaracion de nuevo tipo de variable
+
+
+- Funciones matematicas de C++:
+	pow(x,y)=x^(y)
+	.close()=cerrar archivo
+	pi=acos(-1.0)
+	
+
+- Bucles:
+	for (contador incial; condicion de avance; paso) -->IMPORTANTE! Separacion por ; entre elementos
+	while (condiciones de avance)
+	pasos: i+1=i++
+		i-1=i--
+
+
+- Elementos logicos:
+	&&=y: ambos deben ser V
+	!variable: negacion de variable. Si variable V, entonces es F
+
+
+- Otros:
+	.eof: para indicar final de archivo
+	
+
+- Control de memoria:
+	&x: devuelve direccion de memoria donde esta almacenada la variable x
+	*p: devuelve valor almacenado en direccion p de memoria (p=puntero)
+	sizeof(n): devuelve tamaño de memoria donde esta almacenada la variable n (en bytes)
+	p=new double [n]: reserva de memoria para n variables double consecutivas en el puntero p.
+		Para guardar datos en memoria reservada: p[i]=xi
+		A guardar datos, p[i]=*(p+i)
+		IMPORTANTE!! NUMERACION COMENZANDO POR 0
+		Dim de puntero se puede alterar a lo largo del programa. Se pierden datos almacenados
+	double V[n]: array de n variables de tipo real, reservado espacio en memoria
+		Guardado de datos, V[i]=yi
+		Dim de array no se puede alterar a lo largo del programa
+	
+
+- Creacion funciones:
+	(type) void: la funcion no devuelve nada en su nombre
+	(type argumento) double (*f)(double): argumento de entrada es una funcion
+	return: devolucion de variable definida en funcion 
+
+
+- Datos por pantalla:
+	>> // <<: flujo de informacion 
+	cout<<: salida en pantalla 
+	"\n" = endl: fin de renglon
+	"\n\n": dos saltos de linea
+	cin>>: entrada por pantalla, solo variables, no texto. No acabar con endl (daria problemas)
+
+
+- Creacion de tipo de datos:
+	class (nombre)
+	template<class T>: T indica tipo de variable, permite la modificacion de toda la class (en el main, indicar class<type>)
+		escribir en cabecera, antes de declaracion de tipo de variable
+	nombre::funcion --> para creacion de funcion para esa clase de datos
+	nombre::operator(signo) --> para creacion de operacion con tipo de datos
+	
+	

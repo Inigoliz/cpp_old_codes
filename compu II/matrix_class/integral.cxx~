@@ -1,0 +1,17 @@
+double integral(double(*f)(double), double a, double b, double n){ // "a": limite inferior, "b" limite superior, "n" divisiones de la particion
+
+  k = (b-a)/n;
+
+  matrix<double> X(1,n);
+  matrix<double> FX(1,n);
+
+  X(1,0) = a+n/2;
+
+  for(int i = 1; i < n; i++){
+    X(1,i) = X(1,i-1) + n;
+  }
+
+  FX = f(X);
+cout
+
+}

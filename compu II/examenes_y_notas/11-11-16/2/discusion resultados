@@ -1,0 +1,21 @@
+Examen 11-11-16, Iñigo Lara.
+
+Discusión de los resultados del 2º problema:
+
+Hallar la solución de la ecuación es equivalente a hallar los ceros de la función diferencia, es decir, f(x) = x²+5x+3-exp(x).
+Al no tratarse de una ecuación polinómica, no cumple el TFAlgebra y puede que tenga más de una solución. Se estudiará en el intervalo [-5,5].
+
+Al observar la tabla ("tabla.dat") se observa que se han obtenido tres valores diferentes para los valores de x que verifican f(x) = 0:
+x1 = -4.30651
+x2 = -0.542653
+x3 = 3.48247
+
+Como el método de Newton lo que hace es, desde un determinado punto de partida (p) dejarse caer por la pendiente hasta cortar al eje de abscisas, ahí ver cuánto vale x y comprobar si (x-p)<eps, y si no lo es, repetir, las soluciones halladas, así como el número de iteraciones, dependerán fuertemente del punto de partida. De hecho, es recomendable esbozar la función antes de comenzar para partir desde el mejor punto posible.
+
+Se comprueba como para valores de p entre [-5,-4.3] (valores de p menores que x1), todos los resultados convergen a x1, y como el número de iteraciones va disminuyendo conforme p se acerca a x1 (3 para p = -5, 2 para p = -4.3)
+A partir de p = -4.3, el numero de iteraciones vuelve a aumentar, pero las soluciones siguen convergiendo a x1, hasta alcanzar un máximo de iteraciones en p = -2.4 (ite = 30). En el intervalo entre -2.4 y -2.1, las soluciones convergen de pronto a x3. A partir de -2, convergen a x2, y va bajando el número de iteraciones, alcanzando el mínimo n p = -0.5, próximo a x2, para después volver aumentar.
+A partir de p = 2.3, donde hay un máximo de iteraciones (30), todas las soluciones convergen a x3, dandose el mínimo de iteraciones para los p's más próximos a x3 (2 para p = 3.5).
+Entre p = -0.5 y p = 1.8, ocurre lo que cabría pensar: el número de iteraciones aumenta, pero sigue convergiendo a x2, sin embargo para p entre 1.9 y 2.2, la solución vuelve a converge a x1. ¿Por qué? (0curre lo mismo, que de pronto converge a x3, entre -2.4 y -2.1)
+
+Todos estos efectos se explican atendiendo a que la función tiene máximos o mínimos en estos puntos: en los máximos o mínimos, la derivada es 0, y por tanto, al dejarse caer por la pendiente, puede que caigas muy lejos del punto de partida (de ahí que hagan falta muchas más iteraciones) o puede que caigas en zonas de la función totalmene diferentes de la de partida (por eso de repente converge a x3, o a x1)
+De hecho, evaluando la función derivada en p = -2.4 y en el intervalo de 2 a 2.3, se comprueba que debe existir un máximo (lo cual tiene sentido, pues si la función tiene tres 2, deben existir dos extremos relativos en el intervalo estudiado).

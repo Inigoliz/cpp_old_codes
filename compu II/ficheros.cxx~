@@ -1,0 +1,23 @@
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+int main(){
+  ifstream elmio("misdatosin.dat");
+  ifstream eltuyo("tusdatosin.dat");
+  ofstream resultados("resultados.out");
+  double misnum,tusnum,sum;
+  sum=0.0;
+  for(int i=1;i<=4;i=i+1){
+    elmio>>misnum; eltuyo>>tusnum;
+    sum=misnum+tusnum;
+    resultados<<sum<<endl;
+  }
+  elmio.close();
+  eltuyo.close(); 
+}
+
+
+

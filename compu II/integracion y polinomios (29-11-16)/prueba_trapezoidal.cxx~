@@ -1,0 +1,31 @@
+/* Compu 29-11-16 */
+/* Programa para probar "trapezoidal.cxx", sketch que integra una funcion
+   analitica f(x) por el metodo trapezoidal */
+
+#include <iostream>
+#include <cmath>
+
+uaing namespace std;
+
+// funciones
+#include "trapezoidal.cxx"
+
+
+//////////////////////////// Funcion ///////////////////
+
+double f(double x){
+  return x*x*exp(-x);
+}
+
+int main(){
+  double a = 0; // limite inferior de integracion
+  double b = 1; // limite superior de integracion
+  double paso = 1e-3; // paso
+  double integral = 0; // valor de la integral
+
+  integracion_trapezoidal(f, a, b, pasos, integral);
+
+
+
+
+}

@@ -1,0 +1,53 @@
+
+on windows:
+
+- download and install "VMware Workstation Player" for windows
+
+  . it can be found in:
+
+  https://my.vmware.com/web/vmware/downloads
+
+  . this software is free, so avoid the "Pro" version which is not
+    free.
+
+  . at installation level, it requires an e-mail address
+
+- download an image of xubuntu (iso file):
+
+  . the file xubuntu-14.04.3-desktop-i386.iso can be found here:
+
+    ftp://ftp.free.fr/mirrors/ftp.xubuntu.com/releases/14.04/release/xubuntu-14.04.3-desktop-i386.iso
+
+- execute VMWare player:
+
+    . the installation of the xubuntu virtual machine will require at least 20GB of free disk space
+
+      if this is not available, an external hard drive can be used but it might significantly slow down the processes
+
+    . select "Create a new virtual machine"
+
+    . "Installer disc image file (iso):" browse and select the iso file of xubuntu  
+
+    . follow the steps. During installation, it asks to introduce a full name, a username and a password to be used in xubuntu
+
+    . note: the process might fail with an error like this:
+
+      "This host supports Intel vt-x, but Intel VT-x is disabled"
+
+      in this case, you will need to reboot into the BIOS and enable VT (virtualization options)
+
+- xubuntu:
+
+   . after the installation process, xubuntu will boot. In the VMplayer window, you will be asked to introduce the password of your account [the one chosen in a previous step] to log into xubuntu
+
+   . for a first use of xubuntu, a software update window might pop-up: proceed with this update. After that, you will be asked to reboot the system
+
+   . log in again with your password. Use Ctrl-Alt-T to open a terminal window
+   
+   . check whether g++, emacs, gnuplot, xpdf, ... are installed. If not, install them by typing:
+
+       sudo apt-get install g++
+       sudo apt-get install emacs
+       sudo apt-get install gnuplot-x11
+       ...
+       

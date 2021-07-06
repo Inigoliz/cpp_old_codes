@@ -1,0 +1,199 @@
+Apuntes 27-9-16:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DECLARACIÓN DE VARARIABLE: type name;
+
+int a; El compilador busca en la memoria un espacio y lo reserva para a. Al ser int, reserva 32 bits (4 bytes); no se toca durante la ejecución del programa.
+float a; a es un decimal, con 32 bits también
+double a; double, 64 bits, 8 bytes
+a = 10; Se va a la posición de memoria asignada para "a" y guarda el 10.
+int b[n]; coge n posiciones, una seguida de la otra, para guardar los datos.
+Tanto a como b[0], b[1], ... tienen una dirección de memoria asignada.
+
+NOMBRE (identificador):                 a
+VALOR:                                  10
+DIRECCIÓN:                             538(pej)          --- a la izq. está la 537, a la derecha, 539...
+
+Para acceder a "a" se puede acceder con su nombre, o con su dirección, entrar y ver que contiene esa posición de memoria.
+
+&a : lugar de la memoria donde está "a": &a=538
+
+PUNTERO: adir = &a; adir es una variable que almacena la dirección de otra variable. adir es un puntero
+(&: OPERADOR DE DIRECCIÓN)
+
+*adir; muestra el contenido que hay en la posición de memoria que indica adir
+(*: OPERADOR DE DESREFERNIACIÓN)
+*(adir+1); muestra el contenido en la posición siguiente a adir
+
+b = *adir; b = 10
+
+DECLARACIÓN DE PUNTERO: type *name; (* ahora no tiene nada que ver con la desrefernciación)
+
+BASE HEXADECIMAL:
+
+0,1,2,...,9,a,b,c,d,e,f
+
+El número 16(dec) = 10(hex)
+
+c0 + 8 = c8;
+c8 + 8 = d0;
+
+
+"\n" == '\n': salto de línea
+
+
+NOTA:
+
+int *addr_a; addr_a es un pointer
+
+b = *addr_a; b será igual al valor que haya en addr_a
+
+*addr_a == addr_a[0]: son equivalentes: entra en esa dirección y saca el elemento 0
+
+NOTA:
+int *p;
+p = new int[10]; // reserva 10 cloques de memoria que comienzan en la posicion del puntero p
+p[11] = 15; // guarda 15 en la posicion siguiente de p; no daria problema;
+p = new in[11]; // reserva 11 bloques para p, pero en un sitio diferente de los de antes; BORRA LO ANTERIOR
+// habria que hacer un paso intermedi para tarsladar lo que ya habia en p (con 10) y pasarlo a p (con 11)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FUNCIONES:
+
+LAS FUCNIONES COMO substraction TIENEN QUE SER DECLARADAS ANTES DEL main
+
+
+int subtraction (int a, int b) { // el int del principio indica que se devuelve un entero. En los parentesis se declara lo que entra. 
+  //CUIDADO CON ORDEN de los argumentos de entrada
+
+  int r;
+
+  r = a - b;
+
+  return r;
+
+}
+
+
+Lo primero que se ejecuta siempre es el "int main()"
+Poner "return"
+
+////////////////////////// Función que no devuelve nada: void
+
+void printmessage () {
+  cout << "I'm a function!\n";
+}
+
+////////////////////////// Función que toma arrays
+
+int subtraction4(int *a): lo que entra a la función es todo un array
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Apuntes 29-9-16:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ #include <cmath>
+
+EXPORTAR DATOS
+
+En el main:
+
+ofstream fpuntos("derivada.out"); // prepara para exportar, crea derivada.out vacio y le asigan el alias fpuntos
+
+fpuntos << x << "  " << y << "  " << df << endl; // imprime en derivada.out el valor de "x", de "y" y de "df"
+
+fpuntos.close(); // finaliza la escritura
+
+PINTAR CON GNUPLOT (ejecutar en Terminal)
+
+gnuplot: entra en gnuplot
+
+plot "derivada.out" u 1:2 pinta la primera columna de datos de deriva.out frente a la segunda
+replot "derivada.out" u 1:3 pinta la pimera columna frente a la tercera
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+RECURSOS VARIADOS:
+
+cout<<"\n\n"<<endl; produce 2 saltos de linea
+
+NUMEROS ALEATORIOS:
+Ej:
+#include <stdlib.h>
+#include <time.h> // libreri para manejar tiempo
+#include<iostream>
+using namespace std;
+ 
+int main()
+{
+    int num, c;
+    srand(time(NULL)); // genera una semilla para los numeros aleatorios
+    
+    for(c = 1; c <= 10; c++)
+    {
+        num = 1 + rand() % (11 - 1);
+        cout << num<< " ";
+    }
+    
+    return 0; PREGUNTAR
+}
+
+En general:
+variable = limite_inferior + rand() % (limite_superior +1 - limite_inferior) ;
+
+
+system("pause"); detiene la Terminal
+/*uso punteros c++*/https://www.programarya.com/Cursos/C++/Estructuras-De-Datos/Punteros
+
+cout<<sizeof(a)<<endl; // devuelve el numero de bytes que ocupa "a"
+
+ARRAYS MULTIDIMENSIONALES:
+
+#include <array> // para optimizar el uso de arrays
+
+int mat [3][5]; //crea un array 3x5 (3, vertical, 5 horizontal); equivale a hacer un bloque de 15 elementos (3*5) de memoria seguidos
+char century [100][365][24][60][60];  // pueden estaren todavia mas dimensiones
+
+void procedure (int arg[]) // se pasa el array 1xn arg[] a la funcion procedure
+
+void procedure (int myarray[][3][4]) // se pasa el array 3x4 a la funcion procedure. CUIDADO SINTAXIS
+
+NOTA: != // diferente de
+
+SWITCH CASE:
+
+switch ( c )
+      {
+         case 'A':
+            capa++;
+            break;
+         case 'a':
+            lettera++;
+            break;
+         default:
+            nota++;
+      }
+
+DO-WHILE:
+
+do{
+stat;
+}
+while();
+
+	
+
+
+
+
+
+
+

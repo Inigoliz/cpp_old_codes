@@ -1,0 +1,91 @@
+
+
+*********************   TEORIA   *******************
+
+
+VARIABLES --------------------------------------------------------------------------
+
+Elementos:
+ - Identificador: nombre de variable
+ - Valor: valor asociado a identificador
+ - Direccion: lugar de memoria donde esta almacenada
+
+Acceso:
+	Llamada al identificador
+	Llamada a la direccion (&: operador de direccion)
+
+
+
+PUNTEROS ---------------------------------------------------------------------------
+
+Def: variables que contienen una dirección. Permiten localizar direccion de una variable.
+
+Declaracion de puntero (comando): 
+	*p: muestra valor guardado en la direccion de memoria "p"
+		*A=A[0], con A array (el puntero señala el inicio de un array)
+
+Caracterisicas:
+ - Un puntero no tiene por qué permanecer constante, se puede desplazar por la memoria
+ - El tipo del puntero debe concidir con el tipo del array (si se usan conjuntamente)
+ - El puntero no necesita reservar espacio de memoria (si lo necesitan los arrays)
+ - El nombre de un array sirve tambien de puntero señalando la direccion del elemento 0 del array
+
+
+
+FUNCIONES ---------------------------------------------------------------------------
+
+Estructura de llamada: (type) nombre (argumentos){
+ - Type: tipo de lo que devuelve la funcion
+	type void: no devuelve nada (no poner return)
+ - Argumentos: definicion del tipo de los argumentos, separacion por ,
+	puede no tener argumentos: especificar los parentesis --> type nombre(){
+	Argumento de direccion: type &variable
+	Argumento para array: (type array)*(name puntero)
+
+Caracteristicas:
+ - Variable dentro de una funcion: 
+	Se mantienen dentro de ella. Si se quieren sacar, usar return (variable).
+	Modificacion de variable dentro de funcion: solo se mantienen si se trabaja con la direccion de memoria
+ - Si el argumento es un puntero, el valor almacenado en esa direccion se ve modificado fuera de la funcion
+	
+Definicion de funciones:	
+ - Si se definen dentro del propio programa, han de estar antes del main.
+ - Se pueden definir en fichero aparte: #include "(direccion archivo)/(nombre archivo)"
+	siempre despues de todas las llamadas a bibliotecas oficiales.
+	si no se especifica direccion, busca en el directorio de trabajo actual.
+	solo compilacion del programa con main, no del programa con funciones
+ - Para varias funciones propias:
+	a) Varias funciones definidas en mismo archivo
+	b) LLamadas a distintos archivos ---> 
+RECOMENDABLE! Archivo de funcion en misma carpeta que programa, las direcciones cambian de un ordenador a otro.
+
+
+
+CLASE ------------------------------------------------------------------------------- 
+
+Def: creacion de un tipo de variable nueva (class nombre{)
+
+Elementos:
+ - Parte protegida (protected): declaracion de variables internas
+ - Parte publica (public): funciones asociadas o permitidas para tipo de datos.
+
+Funciones asociadas:
+ - Declaraccion en public: funcion(argumentos)
+ - Escribir antes del nombre de la funcion "class::funcion"
+ - operator(signo): definicion de operacion ---> ej. operator+(argumentos){
+ - Utilizacion de una funcion especifica propia de la class: (elemento).(funcion)
+
+Funcion no asociada, pero que utiliza variable de tipo class (tipo de variable creada por nosotros):
+ - No se declara en public. 
+ - En su declaracion no se pueden usar las variables protegidas pero si las funciones propias de la clase
+
+Modificacion del tipo de variables internas de class: template<class T>
+ - Escribir al inicio del programa donde se declara la class
+ - Aplicacion: en el main, se especifica el tipo de las variables internas class<type>
+	ej. class<double>: se cambia T por double
+	    class<int>, se cambia T por int
+			
+	
+			
+
+	

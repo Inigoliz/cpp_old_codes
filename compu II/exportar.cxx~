@@ -1,0 +1,22 @@
+
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
+
+int main(){
+  for(int k=0; k<5; k++){
+  FILE *doc;
+  char filename[64]; // variable que guarda palabras, "filename"
+  sprintf(filename, "file%d.txt", k); // en "filename" se guarda "file"+nº
+  
+  doc = fopen(filename, "wb"); // crea un archivo que se llama "fileame"="file2.txt"
+  fprintf(doc,"%.5e \n", double(k)); // imprime en doc el valor de k; %.15 es el numero de decimales; \n, salto de linea
+  fclose(doc);
+  }
+  
+}

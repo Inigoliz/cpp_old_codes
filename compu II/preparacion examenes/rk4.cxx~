@@ -1,0 +1,17 @@
+/* Método Runge-Kutta 4 para resolver ODE's lineales de 1º orden en t*/
+
+/* Argumentos:
+   x''(t,x',y',x,y)
+   y''(t,x',y',x,y)
+   x'(t=0)
+   y'(t=0)
+   x(t=0)
+   y(t=0)
+
+   ti: tiempo inicial
+   tf: tiempo final
+   h: paso de tiempo
+*/
+
+
+

@@ -1,0 +1,23 @@
+/* 17-11-16*/
+/*DIAGONALIZACION DE MATRICES CON EL METODO DE JACOBI (iterativo):
+
+Diagonaliza matrices simetricas (A=At)
+
+*/
+ 
+void diagonaliza(matrix<double> A, matrix<double> &B, int n, double eps){
+
+  matrix<double> R(n,n);
+
+  int i = 0;
+  int j = 0;
+
+  maxMat(A, i, j); // devuelve en i y j la posicion del maximo de la matriz (como es simetrica, se calcula el maximo para los elementos de la parte superior de la diagonal principal)
+
+
+
+
+
+
+
+}

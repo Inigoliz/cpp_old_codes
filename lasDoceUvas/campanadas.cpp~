@@ -1,0 +1,63 @@
+// CAMPANADAS:
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+//#include <QString>
+
+using namespace std;
+
+void casoDePrueba(){
+  //string datos, hora, min, seg;
+  
+  int hora, min, seg;
+  cin>>hora>>min>>seg;
+  cout<<hora<<min<<seg;
+
+  //hora = datos.substr (0,2);
+  //min = datos.substr (3,2);
+  //seg = datos.substr (6,2);
+
+  int ihora, imin, iseg;
+
+  //ihora = int(hora);
+  //imin = int(min);
+  //iseg = std::stoi (seg);
+  //iseg =  QString::fromStdString(seg).toInt(&ok);
+  /*  
+  if(iseg!=0){
+    imin+=1;
+  }
+  else{iseg=60;}
+
+  if(imin!=0){
+    ihora+=1;
+  }
+  else{imin=60;}
+
+
+  if(ihora!=0 && imin!=0 && iseg != 0){
+    cout<<24-ihora<<":"<<60-imin<<":"<<60-iseg<<"\n";
+  }
+  else{cout<<"24:00:00\n";}
+  
+  */
+  
+  //RUTINA:
+
+
+}
+
+int main(){
+  
+  int numCasos = 0;
+  cin>>numCasos;
+
+  for(int i=0; i<numCasos; i++){
+    casoDePrueba();
+
+  }
+
+  return 0;
+
+}

@@ -1,0 +1,38 @@
+/*
+  arguments of a function passed by reference
+*/
+
+#include <iostream>
+
+using namespace std;
+
+// function with arguments declared as references
+
+int subtraction3(int &a, int &b) {
+
+  int r;
+
+  r = a - b;
+
+  a = a + 2; // a is modified
+
+  b = b + a; // b is modified
+
+  return r;
+
+}
+
+
+int main () {
+
+  int x=5, y=3, z;
+
+  cout << '\n' << "before: x, y: " << x << ",  " << y << '\n';
+
+  z = subtraction3(x,y);
+  
+  cout << "after:  x, y: " << x << ",  " << y << ",   return of function: "  << z << '\n';
+
+  // note: subtraction3(2,3) will not work
+
+}

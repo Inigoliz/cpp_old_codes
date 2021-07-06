@@ -1,0 +1,49 @@
+/* COMPU 1-12-16*/
+/* Evaluacion de dos definiciones de derivada simetrica para comprobar los
+   ordenes de precision (h2 en la primera, h4 la segunda)*/
+
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+//funciones
+#include "derivada_h2.cxx"
+#include "derivada_h4.cxx"
+
+//////////////////// Funciones /////////////////////////
+
+double f(double x){
+  return x*x*exp(-x);
+}
+
+double fder(double x){ // derivada analitica de f(x)
+  return 2*x*exp(-x)-x*x*exp(-x);
+}
+/////////////////////////////////////////////////////
+
+
+int main(){
+
+  double a = 0; // limite inferior de integracion
+  double b = 4; // limite superior de integracion
+  double h = 0.04;
+  int n = 100; // numero de divisiones del intervalo [a,b]
+  double x1=0.0;
+
+  ofstream derivada("derivada_h2.dat");
+  derivada<<setprecision(15);
+  derivada<<"# Derivada H2"<<endl;
+
+    for(int i = 0; i<=n; i++){
+      x = a + double(i)*tau;
+      x1=derivadah2(f, fder, a, b, n, h)
+      derivada<< x << x1 << abs(fder(x)-x1) << endl;
+      derivadah4(f, fder, a, b, n, h);
+    } 
+
+// Exportacion de datos
+
+    ofstream derivada("derivada_h2.dat");

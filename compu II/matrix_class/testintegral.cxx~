@@ -1,0 +1,33 @@
+/* Programa para probar la funcion "integral.cxx"*/
+
+#include <string.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+#include "integral.cxx";
+
+using namespace math;
+
+/////////////////////////// Funcion a integrar /////////////////
+double func(double x){
+  return x*x;
+}
+////////////////////////////////////////////////////////////////
+
+
+int main(){
+  double a = 1;
+  double b = 2;
+  double n = 1000;
+
+  double val = 0.0;
+
+  val = integral(func, a, b, n);
+
+  cout<<val<<endl;
+
+
+
+}

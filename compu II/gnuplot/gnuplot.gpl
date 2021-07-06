@@ -1,0 +1,142 @@
+
+#########################################################
+### Plot y vs x from the file datafile.dat
+### where x is the first column and y the second column
+
+plot 'datafile.dat' u 1:2
+
+## including ranges
+
+plot [0.0:pi][-1.1:1.1] 'datafile.dat' u 1:2
+
+## set ranges
+
+set xrange [0.0:pi]
+set yrange [-1.1:1.1]
+
+## plot two curves on the same window
+
+plot 'derivada1.dat' u 1:2
+replot 'derivada2.dat' u 1:2
+
+## add a shift to the data in the y-axis
+
+plot 'derivada1.dat' u 1:2
+replot 'derivada2.dat' u 1:($2+0.1)
+replot 'derivada2.dat' u ($1):($2+0.1)
+
+## add error bar to y axis
+## the error is taken from the third column
+
+plot 'derivada1.dat' u 1:2:3 w yerr
+
+## add legend to data points
+
+plot 'derivada1.dat' u 1:2 t "derivada metodo 1"
+
+## information about a command: "?"
+
+?plot
+
+## or
+
+help plot
+
+#########################################################
+### Fit data to a function
+
+# define function
+f(x)=a*cos(x+b)
+
+set fit errorvariables
+FIT_LIMIT=1e-8
+
+fit f(x) 'derivada1.dat' u 1:2 via a,b # coge los datos de derivada.dat, 1º col eje X, 2º eje Y, y los ajusta a la función f(x)
+
+fchi = FIT_STDFIT**2
+fdof = FIT_NDF
+ea  = a_err/FIT_STDFIT
+eb  = b_err/FIT_STDFIT
+
+print " a: ", a, " +/- ", ea
+print " b: ", b, " +/- ", eb
+
+
+## to include a range where to fit:
+
+fit [0.0:(pi/2.0)] f(x) 'derivada1.dat' u 1:2 via a,b
+
+## plot function and data:
+
+plot 'derivada1.dat' u 1:2 t "derivada metodo 1"
+replot f(x) t "fit"
+
+#########################################################
+### export plot to pdf file:
+
+set term pdfcairo
+set output "myfile1.pdf"
+plot   'derivada1.dat' u 1:2 t "derivada metodo 1"
+set term X11
+
+## another possibility allowing to include two curves:
+
+plot   'derivada1.dat' u 1:2 t "derivada metodo 1"
+replot 'derivada2.dat' u 1:($2+0.1) t "derivada metodo 2"
+
+set term pdfcairo # abre formato pdf
+set output "myfile2.pdf"
+replot
+set term X11 #cierra el formato pdf
+
+
+#########################################################
+Available terminal types:
+           aed512  AED 512 Terminal
+           aed767  AED 767 Terminal
+             aifm  Adobe Illustrator 3.0 Format
+         bitgraph  BBN Bitgraph Terminal
+              cgm  Computer Graphics Metafile
+            corel  EPS format for CorelDRAW
+             dumb  ascii art for anything that prints text
+              dxf  dxf-file for AutoCad (default size 120x80)
+            eepic  EEPIC -- extended LaTeX picture environment
+              emf  Enhanced Metafile format
+            emtex  LaTeX picture environment with emTeX specials
+         epslatex  LaTeX picture environment using graphicx package
+     epson_180dpi  Epson LQ-style 180-dot per inch (24 pin) printers
+      epson_60dpi  Epson-style 60-dot per inch printers
+      epson_lx800  Epson LX-800, Star NL-10, NX-1000, PROPRINTER ...
+              fig  FIG graphics language for XFIG graphics editor
+              gif  GIF images using libgd and TrueType fonts
+             gpic  GPIC -- Produce graphs in groff using the gpic preprocessor
+          hp2623A  HP2623A and maybe others
+           hp2648  HP2648 and HP2647
+           hp500c  HP DeskJet 500c, [75 100 150 300] [rle tiff]
+Press return for more: 
+             hpdj  HP DeskJet 500, [75 100 150 300]
+             hpgl  HP7475 and relatives [number of pens] [eject]
+           hpljii  HP Laserjet series II, [75 100 150 300]
+             hppj  HP PaintJet and HP3630 [FNT5X9 FNT9X17 FNT13X25]
+           imagen  Imagen laser printer
+             jpeg  JPEG images using libgd and TrueType fonts
+       kc_tek40xx  MS-DOS Kermit Tek4010 terminal emulator - color
+       km_tek40xx  MS-DOS Kermit Tek4010 terminal emulator - monochrome
+            latex  LaTeX picture environment
+               mf  Metafont plotting standard
+              mif  Frame maker MIF 3.00 format
+               mp  MetaPost plotting standard
+          nec_cp6  NEC printer CP6, Epson LQ-800 [monocrome color draft]
+          okidata  OKIDATA 320/321 Standard
+              pbm  Portable bitmap [small medium large] [monochrome gray color]
+             pcl5  HP Designjet 750C, HP Laserjet III/IV, etc. (many options)
+              png  PNG images using libgd and TrueType fonts
+       postscript  PostScript graphics, including EPSF embedded files (*.eps)
+          pslatex  LaTeX picture environment with PostScript \specials
+            pstex  plain TeX with PostScript \specials
+         pstricks  LaTeX picture environment with PSTricks macros
+              qms  QMS/QUIC Laser printer (also Talaris 1200 and others)
+
+
+
+

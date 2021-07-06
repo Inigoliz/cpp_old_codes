@@ -1,0 +1,9 @@
+#include <sstream>
+#include <string>
+using namespace std;
+
+string myStream = "45";
+istringstream buffer(myString);
+int value;
+buffer >> value;
+cout<<value; // value = 45 

@@ -1,0 +1,19 @@
+/* Funcion Euler para resolver ODEs*/
+/* necesita "mivector.h" y "maxvec.cxx" */
+
+void euler(mivector<double> (*f)(double,mivector<double>),double t0, mivector<double> y0, double tau, int n, int ndim, mivector<double> *y){
+
+  double t;
+  t = t0;
+
+  // Condiciones iniciales
+  y[0][0] = y0[0];
+  y[0][1] = y0[1];
+
+  for(int i = 0; i<n; i++){
+    t = t0 + i*tau;
+
+    y[i+1] = y[i] + tau*f(t, y[i]);
+    cout<<"Euler "<<y[i][1]<<endl;
+  }
+}

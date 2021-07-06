@@ -1,0 +1,80 @@
+/* Examen 16-12-16 */
+/* Resolucion de un sistema de ODEs con el metodo RK2 */
+
+#include<string.h>
+#include<iostream>
+#include<fstream>
+#include<iomanip>
+#include<cmath>
+
+using namespace std;
+
+#include "mivector.h"
+#include "RK2.cxx"
+
+/////////////////////////////// f(t,y)////////////////////////////////
+mivector<double> f(double t, mivector<double> y){
+  const double g = 9.80665;
+  const double m = 1;
+  const double b = 0; // parametro que controla la influencia del rozamiento
+  const double h = 9000;
+  const int ndim = 4;
+  mivector<double> yout(ndim); // salida
+  yout[0] = -g-b/m*exp(-y[2]/h)*y[0];
+  yout[1]= -b/m*exp(-y[2]/h)*y[1];
+  yout[2]= y[0];
+  yout[3]= y[1];
+  return yout; 
+}
+/////////////////////////////////////////////////////////////////////
+
+int main(){
+  cout<<setprecision(15);
+  const int n = 500; // 500 instantes de tiempo
+  const int ndim = 4; // 5 variables, pues se descompone el sistema de 2º orden en 2 de 1º, mas el tiempo
+  const double t0 = 0; // instante inicial
+  double tau = 0.1; //  paso de tiempo
+
+  mivector<double> y0(ndim); // condiciones iniciales
+  y0[0] = 0; // vz inicial
+  y0[1] = 300; // vx inicial
+  y0[2] = 10000; // z inicial
+  y0[3] = 0; // x incial
+
+  /* yrk2 = [vz, vx, z, x] */
+  mivector<double> *yrk2;
+  yrk2 = new mivectores<double,ndim>[n]; // objeto que guarda 300 instantes de tiempo
+
+  RK2(f, t0, y0, tau, n, ndim, yrk2);
+
+  // Exportacion de datos:
+  FILE *doc;
+  doc=fopen("sin_roz_misil.dat","w");
+  fprintf(doc, "# tiempo (s) \t\t x \t\t\t z \t\t\t vx \t\t\t vz \n");
+
+  for(int i = 0; i<n; i++){
+    fprintf(doc, "%f \t %.8e \t %.8e \t %.8e \t %.8e \n", t0+i*tau, yrk2[i][3], yrk2[i][2], yrk2[i][1], yrk2[i][0]);
+  }
+
+  fclose(doc);
+
+  // Busqueda de tmax y xmax
+
+  double tmax = 0.0;
+  double xmax = 0.0;
+  int j = 0; // auxiliar, para ir variando a traves de yrk2
+
+ while(yrk2[j][2]>0){
+   j++;
+ }
+
+ tmax = tau/2*(2*j-1); // tiempo promedio entre antes de alcanzar el suelo y despues
+ xmax = yrk2[j][3];
+ cout<<tmax<<" "<<xmax<<endl;
+
+}
+
+
+
+
+

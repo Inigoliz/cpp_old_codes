@@ -1,0 +1,34 @@
+// PLOMAR:
+#include <iostream>
+
+using namespace std;
+
+void casoDePrueba(){
+  
+  int palomas, huecos;
+
+  cin>>palomas>>huecos;
+
+  if(palomas>huecos){    
+    cout<<"PRINCIPIO \n";
+  }
+
+  else{
+    cout<<"ROMANCE \n";
+  }
+
+}
+
+int main(){
+  
+  int numCasos = 0;
+  cin>>numCasos;
+
+  for(int i=0; i<numCasos; i++){
+    casoDePrueba();
+
+  }
+
+  return 0;
+
+}

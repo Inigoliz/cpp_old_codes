@@ -1,0 +1,44 @@
+/*
+  arguments of a function passed by value
+*/
+
+#include <iostream>
+
+using namespace std;
+
+// declaration of function 
+
+int subtraction2(int a, int b) {
+
+  int r;
+
+  r = a - b;
+
+  a = a + 2; // a is modified but only locally
+
+  b = b + a; // b is modified but only locally
+
+  return r;
+
+}
+
+
+int main () {
+
+  int x=5, y=3, z;
+
+  cout << '\n' << "before: x, y: " << x << ",  " << y << '\n';
+
+  z = subtraction2(x,y);
+  
+  cout << "after:  x, y: " << x << ",  " << y << ", (x-y): "  << z << '\n';
+
+  int a=6, b=5, c;
+
+  cout << '\n' << "before: a, b: " << a << ",  " << b << '\n';
+
+  z = subtraction2(a,b);
+
+  cout << "after:  a, b: " << a << ",  " << b << ", (a-b): " << z << '\n';
+
+}

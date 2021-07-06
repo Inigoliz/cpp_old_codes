@@ -1,0 +1,61 @@
+// EVEREST:
+#include <iostream>
+
+using namespace std;
+
+bool casoDePrueba(){
+
+  int num;
+  cin>>num;
+  
+  if(num==0){
+    return false;
+  }
+  else{
+
+    int escaladores = num;
+    long int vel[escaladores+1];
+
+    int min = escaladores;
+    int max = 1;
+    int tam = 1; // tamaño del grupo
+
+    int grupos = 0;
+
+    for(int i=0; i<escaladores; i++){     
+      cin>>vel[i];     
+    }
+
+    vel[escaladores]=0; // siempre se parte al final
+
+    for(int i=1; i<escaladores+1; i++){
+      
+      if(vel[i]<vel[i-1]){
+	grupos +=1;
+	if(tam<min){
+	  min = tam;
+	}
+	if(tam>max){
+	  max = tam;
+	}
+        tam = 1;
+      }
+      else{
+        tam+=1;
+      }
+    }
+
+    cout<<grupos<<" "<<min<<" "<<max<<"\n";
+      
+  }
+  return true;
+}
+
+
+int main(){
+  while(casoDePrueba()){ // sale de él tras el indicador de final de problema
+  }
+  
+  return 0;
+
+}

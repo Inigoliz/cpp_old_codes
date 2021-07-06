@@ -1,0 +1,265 @@
+
+
+Gregorio Herdoíza
+
+Instituto de Física Teórica UAM/CSIC
+C/ Nicolás Cabrera 13-15
+Universidad Autónoma de Madrid
+Cantoblanco, 28049 Madrid, Spain
+Office: 302
+
+E-mail: gregorio.herdoiza@uam.es
+
+Despacho en la facultad de ciencias:
+Módulo 15 - 513
+
+==============================================================
+
+Web page: http://intranet.ft.uam.es/
+• Usuario:  alumnocomp2tar
+• Password: alumnocomp2tar
+
+==============================================================
+
+* Tutorial UNIX:
+
+http://www.ee.surrey.ac.uk/Teaching/Unix/
+
+* Tutorial C++:
+
+http://www.cplusplus.com/doc/tutorial/introduction/
+
+ . pdf file:
+
+http://www.cplusplus.com/files/tutorial.pdf
+
+* Libros en la biblioteca de ciencias
+
+==============================================================
+
+* Ubuntu:
+  ------
+
+. Open a terminal:  Ctrl-Alt-t
+
+. Open new tab : Ctrl-Shift-t
+
+. Switch to another tab:
+                    Ctrl-PageDown
+                    Ctrl-PageUp
+
+. Change workspace: Ctrl-Alt-Left
+                    Ctrl-Alt-Right
+
+. Change window to another workspace:
+                Shift-Ctrl-Alt-Left
+                Shift-Ctrl-Alt-Right
+
+. List of Shortcuts:
+  System Settings -> Keyboard -> Shortcuts
+
+==============================================================
+
+* software: 
+  --------
+
+	    emacs:    text editor
+            gnuplot:  create plots
+	    evince:   open pdf files
+            firefox:  browser
+            libreoffice: write document
+
+
+* compiler: g++
+  --------
+
+==============================================================
+
+* UNIX commands
+  -------------
+
+. mkdir: crear directoririo (carpeta)
+
+  mkdir dir_name
+
+. man: manual de comandos
+
+  man mkdir
+
+. cd: cambiar directorio
+  cd ..
+
+. pwd: present work directory
+
+. ls: lista archivos y directorias 
+  ls -ltr
+
+  ls a*
+
+. cp: copiar archivos [use -i] 
+
+  cp -ip filename1 dir2/filename2
+
+. mv: desplazar archivos [use -i]
+
+  mv -i filename1 dir2/filename2
+
+  mv -i filename1 /media/usb_key_name/
+
+. rm: borrar archivos
+
+  rm -i filename1
+
+  rm -ir dir1
+
+
+. alias: cambiar el nombre de un comando
+
+  alias rm='rm -i'
+
+. less: ver el contenido de un archivo
+
+  less filename
+
+
+. chmod: cambiar los permisos de lectura, escritura, ejecución de un archivo
+
+  chmod g+rw filename
+
+
+. tar: almacenar archivos y directorios en un solo archivo y compresión
+
+  ## Crear archivo "tar"
+
+  tar -czvf file_archive.tgz list_of_file
+
+  ## Abrir archivo "tar"
+
+  tar -xzvf file_archive.tgz
+
+
+. history: lista de comandos ejecutados
+
+. exit: cerrar un terminal
+
+. use of Tab key to complete words
+
+
+============================================================
+
+* emacs
+  -----
+
+
+  emacs filename.cxx &
+
+
+
+. if you forget the "&":
+         Ctrl-z bg
+
+. Ctrl-x Ctrl-s : save
+
+. Ctrl-x Ctrl-f : open file
+
+. Ctrl-k  : cut line
+
+. Ctrl-y  : paste line
+
+. Alt-x goto-line num
+
+. use Tab to indent
+
+. Alt-x indent-region
+
+. Crtl-_ : undo
+
+. Ctrl-Space: set mark
+
+. Alt-> : go to end of file
+
+. Alt-< : go to beginning of file
+
+. split screen:
+        Ctrl-x 2
+        Ctrl-x 1
+
+        Ctrl-x 0
+
+. Ctrl-x Ctrl-c : exit emacs
+
+
+============================================================
+
+* compiler
+  --------
+  
+g++ file.cxx -o file.exe
+
+g++ -pedantic -Wall file.cxx -o file.exe
+
+g++ -O1 file.cxx -o file.exe
+
+
+============================================================
+
+* Floating points (numerical precision):
+  -------------------------------------
+  
+http://www.h-schmidt.net/FloatConverter/IEEE754.html
+
+============================================================
+
+* Ejemplo de programa c++: test_hello.cxx
+  -----------------------
+
+/*
+
+Este es un programa de input/output
+
+y este es un comentario
+
+*/
+
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+  // ejemplo del uso de cout:
+
+  cout << "The proton mass is 938 MeV/c^2.\n"; // another comment
+
+  cout << "The proton is" << " 1836 times heavier than the electron." << endl;
+
+  std::cout << "\t The universe is 13.8 billion years old."  << std::endl;
+
+  return 0;
+}
+
+
+============================================================
+
+
+* Compilación y ejecución del programa
+  ------------------------------------
+
+g++ test_hello.cxx -o test_hello.exe
+./test_hello.exe
+
+
+============================================================
+
+Evaluación:
+----------
+
+## Cla. -> trabajo en clase
+## Fun. -> ¿el código funciona? ¿Produce resultados correctos?
+## Alg. -> algoritmo, aspectos analíticos, programación, compilacion
+## Efi. -> eficiencia, concisión, estructura
+## Com. -> comentarios en el código
+## Inf. -> evaluación del informe
+## Ext. -> extension en relación a lo que pedía el enunciado
+

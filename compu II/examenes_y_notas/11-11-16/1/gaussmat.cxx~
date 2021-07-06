@@ -1,0 +1,47 @@
+/* Script para probar GAUSS-SEIDEL*/
+
+/*NECESITA QUE ESTE DECLARADO EN EL PRINCIPAL "matrix.h" y todas sus librerias asociadas;*/
+
+void gauss(matrix<double> A, matrix<double> B, matrix<double> &X, int n, double eps, int &ite){ // a, b y x son punteros que dirigen a las posiciones en el programa principal donde se han  guardado los elementos del sistema a resolver
+
+  /*El programa toma vectores habituales de C++ y crea matrices de la clase matrix a partir de ellos.
+    podria editarlo para que tomara directamente matrices, pero creo que es mas util de esta forma*/
+
+  matrix<double> C(n,n);
+  matrix<double> X0(n,1); // valores (k-1) de x
+  matrix<double> Cinv(n,n); // inversa de C (que como es diagonal, es facil de calcular)
+  matrix<double> Ide(n,n); // Identidad nxn
+  matrix<double> Ide1(n,1); // Identidad nx1
+  matrix<double> auxNorm(n,n); // matriz que guarda (1-Cinv*A), y despues llamando a normmat, nos devolvera su norma
+  matrix<double> aux(n,1); // columna auxiliar
+
+  C.Null();
+  Cinv.Null();
+  X0.Null();
+  aux.Null();
+
+  double norma = 0;
+
+  cout<<"Matriz A:"<<endl;
+  cout<<A<<endl;
+  cout<<"Columna B:"<<endl;
+  cout<<B<<endl;cout<<X<<endl;
+
+  auxNorm = (Ide - Cinv*A);
+  norma = normaMat(auxNorm, n); // normaMat es una funcion que toma una matriz (matrix.h) y devuelve su norma
+
+   if(norma<1){ // recurrencia
+     do{
+       X0 = X;
+       ite++;
+       for(int i=0; i<n; i++){
+	 aux = Cinv*(B+(C-A)*X);
+	 X(i,0) = aux(i,0); // asi va cambiando X pero X0 se mantiene, y se puede evaluar en el while la convergencia
+       }    
+     }while((X-X0).Norm()>eps);
+   }
+  else{
+    cout<< "EL METODO NO CONVERGE"<<endl;
+  }
+
+}

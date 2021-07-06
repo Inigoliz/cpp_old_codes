@@ -1,0 +1,49 @@
+/*
+  different ways of using a pointer
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main () {
+
+  const int n=7;
+
+  int numbers[n]; // declaration of an array
+                  // size of the array is set by n
+  
+  int * p;        // declaration of a pointer
+
+
+  // p is an address;   value of p at that address
+
+  p = numbers;         *p = 10;  // the name of an array can be used as a pointer to its first element
+
+  p = &numbers[1];     *p = 20;
+
+  p = numbers + 2;     *p = 30;
+
+  p = numbers;     *(p+3) = 40;
+
+  p = p+4;             *p = 50;
+
+  p++;               p[0] = 60;
+
+  p = numbers;       p[6] = 70;
+
+  
+  for (int i=0; i<n; i++) {
+   cout << "numbers["<< i << "]:  " << numbers[i] << "\n";
+  }
+
+  cout << endl;
+  
+  for (int i=0; i<n; i++)
+    cout << "numbers["<< i << "]:  " << numbers[i] << "\n"; // for loop without braces: use with care
+
+  
+  return 0;
+
+}
+

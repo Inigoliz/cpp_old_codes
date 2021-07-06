@@ -1,0 +1,120 @@
+/* Computacion 13-12-16*/
+/* Comparacion de distintos metodos numericos para la resolucion de ODE. Se resuelve el pendulo simple */
+
+#include<string.h>
+#include<iostream>
+#include<fstream>
+#include<iomanip>
+#include<cmath>
+
+using namespace std;
+
+#include "mivector.h"
+#include "RK2.cxx"
+#include "RK4.cxx"
+#include "euler.cxx"
+
+/////////////////////////////// f(t,y)////////////////////////////////
+mivector<double> f(double t, mivector<double> y){
+  const double g = 9.80665, l = 1.0, m = 1.0;
+  const int n = 301, ndim = 2;
+  mivector<double> yout(2); // salida
+  yout[1] = y[0];
+  yout[0]=-g/l*sin(y[1]);
+  return yout; 
+}
+/////////////////////////////////////////////////////////////////////
+
+int main(){
+  cout<<setprecision(15);
+  const double g = 9.80665, l = 1.0, m = 1.0;
+  const double pi = acos(-1.0);
+  const int n = 301, ndim = 2; // 300 instantes de tiempo, por ejemplo. 2 posiciones, theta y omega
+  const double t0 = 0; // instante inicial
+  double tau = 0.01; //  paso de tiempo
+
+  mivector<double> y0(ndim); // condiciones iniciales
+  y0[0] = 0; // omega inicial
+  y0[1] = pi/4.0; // theta inicial
+
+  mivector<double> *yrk2;
+  yrk2 = new mivectores<double,ndim>[n]; // objeto de 2 filas que guarda 300 instantes de tiempo
+
+  mivector<double> *yrk4;
+  yrk4 = new mivectores<double,ndim>[n]; // objeto de 2 filas que guarda 300 instantes de tiempo
+
+  mivector<double> *yeuler;
+  yeuler = new mivectores<double,ndim>[n]; // objeto de 2 filas que guarda 300 instantes de tiempo
+
+
+  RK2(f, t0, y0, tau, n, ndim, yrk2);
+  RK4(f, t0, y0, tau, n, ndim, yrk4);
+  euler(f, t0, y0, tau, n, ndim, yeuler);
+
+
+  ///////////////////////////////////////////////////// CALCULOS ENERGETICOS: ////////////////////////////////////////////////
+  
+  // La Em debe ser cte. Inicialmente solo hay Ep
+  double em = m*g*l*(1-cos(y0[1])); // Energia mecanica
+  int pasos = 100; // numero de casos diferentes de tau para los que se estudiara la energia
+
+  mivector<double> erk2(n); // energia RK2
+  mivector<double> erk4(n);
+  mivector<double> eeuler(n);
+
+ // Archivos de datos
+    FILE *doc, *Doc, *deltaE;
+  Doc=fopen("PenduloEnergia.dat","w");
+  doc=fopen("PenduloDinamica.dat","w");
+  deltaE=fopen("deltaE.dat", "w"); // documento en que se guardará la diferencia entre el valor real de energia y el calculado para t=3s
+
+  fprintf(doc, "tiempo (s) \t\t Metodo Euler \t\t Metodo RK2 \t\t Metodo RK4 \n");
+  fprintf(Doc, "tiempo (s) \t Energia teorica \t Metodo Euler \t\t Metodo RK2 \t\t Metodo RK4 \n");
+  fprintf(deltaE, "tau \t\t Metodo Euler \t Metodo RK2 \t Metodo RK4 \n");
+
+  // E = Ec+Ep
+
+  // IMP sintaxis; y[tiempo][0 o 1]: 0:omega; 1:theta
+
+  cout<<"Energia"<<endl;
+
+  for(int i = 0; i<n; i++){
+    erk2[i] = 0.5*m*l*yrk2[i][0]*l*yrk2[i][0] + m*g*l*(1-cos(yrk2[i][1]));
+    erk4[i] = 0.5*m*l*yrk4[i][0]*l*yrk4[i][0] + m*g*l*(1-cos(yrk4[i][1]));
+    eeuler[i] = 0.5*m*l*yeuler[i][0]*l*yeuler[i][0] + m*g*l*(1-cos(yeuler[i][1]));
+    
+    fprintf(doc, "%f \t %.15e \t %.15e \t %.15e \n", t0+i*tau, yeuler[i][1], yrk2[i][1], yrk4[i][1]);
+    fprintf(Doc, "%f \t %.15e \t %.15e \t %.15e \t %.15e \n", t0+i*tau, em, eeuler[i], erk2[i], erk4[i]);
+    
+    // cout<<erk2[i]<<" "<<erk4[i]<<" "<<eeuler[i]<<endl;
+  }
+
+  fclose(doc);
+  fclose(Doc);
+
+  tau = 0.001; // tau inicial, ira variando de 0.001 a 0.1
+  double etrk2 = 0; // variables temporales para guardar la energia para cada tau de cada metodo
+  double etrk4 = 0;
+  double eteuler = 0;
+  
+  for(int i = 0; i<=pasos; i++){
+    
+    RK2(f, t0, y0, tau, n, ndim, yrk2);
+    RK4(f, t0, y0, tau, n, ndim, yrk4);
+    euler(f, t0, y0, tau, n, ndim, yeuler);
+
+    etrk2 = 0.5*m*l*yrk2[300][0]*l*yrk2[300][0] + m*g*l*(1-cos(yrk2[300][1]));
+    etrk4 = 0.5*m*l*yrk4[300][0]*l*yrk4[300][0] + m*g*l*(1-cos(yrk4[300][1]));
+    eteuler = 0.5*m*l*yeuler[300][0]*l*yeuler[300][0] + m*g*l*(1-cos(yeuler[300][1]));
+
+    fprintf(deltaE, "%f \t %.15e \t %.15e \t %.15e \n", tau, abs(em-eteuler), abs(em-etrk2), abs(em-etrk4));
+
+    tau = 0.001 + double(i)*0.001;
+  }
+  
+}
+
+
+
+
+

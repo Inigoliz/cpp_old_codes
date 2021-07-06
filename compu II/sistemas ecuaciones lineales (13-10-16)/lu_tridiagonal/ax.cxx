@@ -1,0 +1,22 @@
+//Funcion que hace el producto de una matriz por una funcion
+
+void ax(double *AA, double *x, double *xsol, int n){
+  double xsum;
+  double A[n][n];
+  int c=0;
+  for(int i=0; i<n; i++){ // se transforma el puntero de entrada en un array n*n
+    for(int j=0; j<n; j++){  
+      A[i][j]=AA[c];
+      c=c+1;
+    }
+  }
+  xsum=0;
+  for (int i=0; i<n; i++){
+    for (int j=0; j<n; j++){
+      xsum=xsum+A[i][j]*x[j]; // se va acumulando la suma de cada fila
+    }
+    xsol[i]=xsum;
+    xsum=0;
+  }
+}
+

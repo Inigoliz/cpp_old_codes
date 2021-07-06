@@ -1,0 +1,16 @@
+/* Funcion para derivar numericamente una funcion*/
+
+void derivada(double(*f)(double), double a, double b, double eps, double &df){ // toma "a" y"b", valores entre los cuales se quiere derivar, y "func", la funcion a derivar
+
+  double num = (b-a)/eps+1; // numero de valores que va a haber en x
+  double x[num]; 
+  double y[num];
+  df = double[num];
+
+  for(int i = 0; i < num;  i++){ // crea arrays de valores de x e y
+    x[i] = a + i*eps;
+    y[i] = f(x[i]);
+    df[i] = (f(x[i+eps])-f(x[i]))/eps; // la derivada es (f(x+h)-f(x))/h
+  }
+
+}

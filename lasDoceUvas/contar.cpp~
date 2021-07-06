@@ -1,0 +1,45 @@
+// CONTAR:
+
+
+#include <iostream>
+#include <string>
+#include <math.h>
+
+using namespace std;
+
+bool casoDePrueba(){
+
+  string num;
+  int pos = 0;
+
+  getline(cin,num);
+  cout<<num;
+
+  if(!cin){
+    return false;
+  }
+  else{
+    if(num.legth()<4 && num!= '999'){
+
+    }
+    else{
+
+    }
+    
+
+  }
+  
+  return true;
+
+}
+
+
+int main(){
+  
+  while(casoDePrueba()){
+  }
+
+  
+  return 0;
+
+}

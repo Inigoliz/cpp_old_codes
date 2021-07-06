@@ -1,0 +1,20 @@
+/* Metodo de la secante para encontrar los ceros de una funcion*/
+
+
+double secante(double(*f)(double), double x0, double x1, double eps, int &i3){
+
+  double delta;
+  double x2;
+  double sol;
+  i3 = 0;
+
+  while(abs(x1-x0) > eps){
+    i3++;
+    delta = (f(x1)-f(x0))/(x1-x0);
+    x2 = x1-(f(x1))/delta;
+    x0 = x1;
+    x1 = x2;
+  }
+  sol = (x0+x1)/2;
+  return sol;
+}

@@ -1,0 +1,15 @@
+/* Script para probar JACOBI*/
+
+
+int main(){
+
+ const int n = 3;
+ const double eps = 1e-4;
+ double A[n*n] = {9,1,1,2,10,3,3,4,11};
+ double B[n] = {10,19,0};
+  // double A[n*n] = {9,1,1,2,10,3,3,4,11};
+  // double B[n] = {10,19,0};
+  double X[n] = {}; // X, vale 0 inicialmente
+  jacobi(A, B, X, n, eps);
+
+}

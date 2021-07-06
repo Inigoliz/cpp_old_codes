@@ -1,0 +1,15 @@
+
+/* Funcion que calcula la norma de una matriz (la mayor de la suma de sus filas)  IMP: la matriz que toma es de la clase matrix.h*/
+
+double normMat(matrix<double> a, int dim){ // toma como argumentos la columna sumFil y la dimension (1xdim)
+
+  double r;
+  r = a(1,0); // coge el primer elemento
+
+  for(int i = 1; i<dim; i++){
+    if(a(i,0) > r){ // compara el primer elemento con el segundo
+      r = a(i,0);
+    }
+  }
+  return r; 
+}

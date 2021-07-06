@@ -1,0 +1,25 @@
+//Funcion que hace el producto de una matrixz por una funcion
+
+void ProductoAx (double *AA, double *x, double *xsol, int n){
+  double xsum;
+  double A[n][n];
+  int c=0;
+  for(int i=0; i<n; i++){
+    for(int j=0; j<n; j++){
+    
+      A[i][j]=AA[c];
+      c=c+1;
+      //Transformamos el vector de entrada en matriz
+    }
+  }
+  xsum=0;
+  for (int i=0; i<n; i++){
+    for (int j=0; j<n; j++){
+
+      xsum=xsum+A[i][j]*x[j]; //Vamos acumulando la suma de cada una de las multiplicaciones
+    }
+    xsol[i]=xsum;
+    xsum=0;
+  }
+}
+

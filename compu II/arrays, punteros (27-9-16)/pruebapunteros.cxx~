@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  int *s; // crea un puntero s;
+  int n = 10;
+  s = &n; // asigna a s la direccion de memoria de n
+
+  cout<<"s = "<<s<<endl;
+
+}

@@ -1,0 +1,19 @@
+
+#include <stdlib.h>
+#include <time.h> // libreria para manejar tiempo
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int num, c;
+    srand(time(NULL)); // genera una semilla para los numeros aleatorios
+    
+    for(c = 1; c <= 10; c++)
+    {
+        num = 1 + rand() % (11 - 1);
+        cout << num<< " ";
+    }
+    
+    return 0;
+}

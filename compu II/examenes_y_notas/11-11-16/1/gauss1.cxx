@@ -1,0 +1,66 @@
+/* Metodo GAUSS-SIEDEL para resolucion de sistemas de ecuaciones*/
+
+/*NECESITA QUE ESTE DECLARADO EN EL PRINCIPAL "matrix.h" y todas sus librerias asociadas;*/
+
+void gauss(double *a, double *b, double *x, int n, double eps, int &ite){ // a, b y x son punteros que dirigen a las posiciones en el programa principal donde se han  guardado los elementos del sistema a resolver
+
+  /*El programa toma vectores habituales de C++ y crea matrices de la clase matrix a partir de ellos.
+    podria editarlo para que tomara directamente matrices, pero creo que es mas util de esta forma*/
+
+  matrix<double> A(n,n);
+  matrix<double> C(n,n);
+  matrix<double> B(n,1);
+  matrix<double> X0(n,1); // valores (k-1) de x
+  matrix<double> X(n,1); // valores (k) de x
+  matrix<double> Cinv(n,n); // inversa de C (que como es diagonal, es facil de calcular)
+  matrix<double> Ide(n,n); // Identidad nxn
+  matrix<double> Ide1(n,1); // Identidad nx1
+  matrix<double> auxNorm(n,n); // matriz que guarda (1-Cinv*A), y despues llamando a normmat, nos devolvera su norma
+  matrix<double> aux(n,1); // columna auxiliar
+
+  A.Null();
+  B.Null();
+  C.Null();
+  Cinv.Null();
+  X0.Null();
+  X.Null();
+  aux.Null();
+  Ide.Null();
+  Ide1.Null();
+
+  double norma = 0;
+
+  // Rellena A, B y C, Cinv, Ide, Ide1
+  for(int i=0; i<n; i++){
+    for(int j=0; j<n; j++){
+      A(i,j) = a[i*n+j];
+      }
+    C(i,i) = a[i*n+i]; // en la diagonal los valores de A, en los demas 0
+    Cinv(i,i) = 1/(a[i*n+i]);
+    B(i,0) = b[i]; // los indices empiezan en 0!!
+     Ide(i,i) = 1; // =1
+     Ide1(i,0) = 1; // =1
+    }
+
+  auxNorm = (Ide - Cinv*A);
+  norma = normaMat(auxNorm, n); // normaMat es una funcion que toma una matriz (matrix.h) y devuelve su norma
+
+   if(norma<1){ // recurrencia
+     do{
+       X0 = X;
+       ite++;
+       for(int i=0; i<n; i++){
+	 aux = Cinv*(B+(C-A)*X);
+	 X(i,0) = aux(i,0); // asi va cambiando X pero X0 se mantiene, y se puede evaluar en el while la convergencia
+       }    
+     }while((X-X0).Norm()>eps);
+   }
+  else{
+    cout<< "EL METODO NO CONVERGE"<<endl;
+  }
+
+   for(int i = 0; i<n; i++){
+     x[i] = X(i,0); // guarda los valores calculado en el vector principal, para devolverlos al programa principal
+   }
+
+}

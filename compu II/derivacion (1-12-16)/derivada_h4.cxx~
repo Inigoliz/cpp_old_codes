@@ -1,0 +1,38 @@
+/* Metodo de derivacion con precision h4 (h cuarta)*/
+/* Definicion: f'=(8f(x+h)-8f(x-h)+f(x-2h)-f(x+2h))/(12h) */
+
+void derivadah4(double(*f)(double), double(*fder)(double), double a, double b, int n, double h){
+    /* Entrada:
+f: f(x)
+fder: f'(x) analitica (pues se puede hacer)
+a: punto de inicio para la derivacion
+b: punto final de la derivacion
+n: numero de subdivisiones del intervalo [a,b]
+h: precision de la derivada
+    */
+
+    // Se calculara la derivada en x=a, x=a+tau, x=a+2*ta, ..., x = b => habra "n+1" puntos
+
+    double tau = (b-a)/double(n); // paso
+    double x = a;
+    double yp = 0; // valor de la derivada en cada punto
+    double ya = 0; // f'(x) analitica
+    double err = 0.0; // error, diferencia entre y numerico y analitico
+
+    // Exportacion de datos
+
+    ofstream derivada("derivada_h4.dat");
+    derivada<<setprecision(15);
+
+    derivada<<"# Derivada H4"<<endl;
+    derivada<<"# x"<<"\t"<<"f(x)"<<"\t"<<"f'(x) numerica"<<"\t"<<"f(x) analitica"<<"error"<<endl;
+
+    for(int i = 0; i<=n; i++){
+      x = a + double(i)*tau;
+      yp = (8*f(x+h)-8*f(x-h)+f(x-2*h)-f(x+2*h))/(12*h);
+      ya = fder(x);
+      err = abs(yp-ya);
+      derivada<<x<<"\t"<<f(x)<<"\t"<<yp<<"\t"<<ya<<"\t"<<err<<endl;
+    }
+    derivada.close();
+  }

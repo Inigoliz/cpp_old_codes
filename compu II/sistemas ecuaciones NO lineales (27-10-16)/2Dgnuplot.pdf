@@ -1,0 +1,15 @@
+Comandos ayuda de gnuplot para representacion de funciones de dos variables
+
+gnuplot> f(x,y)=x**2+4*y**2-9
+gnuplot> g(x,y)=18*y-14*x**2+45
+gnuplot> splot f(x,y),g(x,y)
+
+
+gnuplot> set cntrparam levels 0
+gnuplot> set contour
+gnuplot> splot f(x,y),g(x,y)
+
+gnuplot> unset surface
+gnuplot> splot f(x,y),g(x,y)
+
+

@@ -1,0 +1,21 @@
+/* Sketch para probar lu.cxx, metodo LU para resolver Sistemas Lineales*/
+
+#include <iostream>
+#include "lu.cxx";
+
+using namespace std;
+
+int main(){
+  const int n = 3;
+  double A[n*n] = {12,3,-2,2,0.5,1.6,14,4,-1.2,2,2,3,17,2.3,-3,-1,3,-2,16,6,2,2,3,-4,20};
+  double B[n] = {1.7,3.3,2.3,6.6,5.1};
+  // double A[n*n] = {9,1,1,2,10,3,3,4,11};
+  // double B[n] = {10,19,0};
+  double X[n] = {}; // X, vale 0 inicialmente
+  lu(A, B, X, n);
+
+  for(int i=0; i<n; i++){
+    cout<<X[i]<<endl;
+  }
+
+}
